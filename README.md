@@ -4,17 +4,19 @@
 # 轻松分钟玩转书生·浦语大模型趣味 Demo
 使用 InternLM2-Chat-1.8B 模型生成 300 字的小故事
 创建开发机
+![image](https://github.com/TyxYAN/-/assets/101959829/685cb172-7e31-4966-91e0-5d7b8c7386e6)
+
 
 ## 环境配置
 进入开发机后，在 terminal 中输入环境配置命令 
 
-
-Python
 studio-conda -o internlm-base -t demo
 
+![image](https://github.com/TyxYAN/-/assets/101959829/5cbf68d6-dd3b-47df-b399-e2ca97c94ea2)
+
 配置完成后，进入到新创建的 conda 环境之中：
-Python
 conda activate demo
+
 输入以下命令，完成环境包的安装：
 Python
 pip install huggingface-hub==0.17.3
@@ -25,15 +27,16 @@ pip install streamlit==1.32.2
 pip install matplotlib==3.8.3 
 pip install modelscope==1.9.5
 pip install sentencepiece==0.1.99
-下载 InternLM2-Chat-1.8B 模型
+## 下载 InternLM2-Chat-1.8B 模型
 按路径创建文件夹，并进入到对应文件目录中：
-Python
+
 mkdir -p /root/demo
 touch /root/demo/cli_demo.py
 touch /root/demo/download_mini.py
 cd /root/demo
+
+
 打开 /root/demo/download_mini.py 文件，copy以下代码：
-Python
 import os
 from modelscope.hub.snapshot_download import snapshot_download
 
@@ -48,12 +51,14 @@ snapshot_download("Shanghai_AI_Laboratory/internlm2-chat-1_8b",
                   revision='v1.1.0')
 
 执行命令，下载模型参数文件：
-Python
 python /root/demo/download_mini.py
 
-运行 cli_demo
+![image](https://github.com/TyxYAN/-/assets/101959829/d33437ca-1110-49f6-b00d-706ed1667f26)
+
+
+## 运行 cli_demo
 双击打开 /root/demo/cli_demo.py 文件，复制以下代码：
-Python
+
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
@@ -86,11 +91,10 @@ while True:
             length = len(response)
 
 输入命令，执行 Demo 程序：
-Python
 conda activate demo
 python /root/demo/cli_demo.py
-等待模型加载完成，键入内容示例：
-Python
+
+# 等待模型加载完成，键入内容示例：
 ## 请创作一个 300 字的小故事
 得到的输出：
 ![image](https://github.com/TyxYAN/-/assets/101959829/14b92606-20ab-4a62-a8f9-51dd754ac847)
